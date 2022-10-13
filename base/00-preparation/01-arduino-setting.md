@@ -36,7 +36,7 @@ https://docs.m5stack.com/en/arduino/arduino_development を参考にメニュー
 
 ## M5Stack ボード設定のインストール
 
-![e2f5ff82c72b91d79722e7d44a295a88](https://i.gyazo.com/e2f5ff82c72b91d79722e7d44a295a88.png)
+![03ab82cd3f3a66b28f19c05a068d7083](https://i.gyazo.com/03ab82cd3f3a66b28f19c05a068d7083.png)
 
 メニューから ツール > ボード > ボードマネージャ をクリックします。
 
@@ -82,7 +82,7 @@ M5Stack が一つ検索されました。
 
 M5Stack を探します。
 
-![d2b92bfbcc50ae486cfb5d18d9dd85a5](https://i.gyazo.com/d2b92bfbcc50ae486cfb5d18d9dd85a5.png)
+![0b7b3036ee8611a7a735b8d406510b33](https://i.gyazo.com/0b7b3036ee8611a7a735b8d406510b33.png)
 
 右下でバージョンを 0.4.1 を選択してインストールボタンをクリックします。
 

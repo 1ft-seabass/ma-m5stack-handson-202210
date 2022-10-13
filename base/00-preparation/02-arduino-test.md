@@ -66,7 +66,7 @@ void loop() {
 
 ボード設定ができたら検証ボタンをクリックします。
 
-![1c563a06d93c49554e1cee5b0d249d4a](https://i.gyazo.com/1c563a06d93c49554e1cee5b0d249d4a.png)
+![b04e04c0a066039bc4b040ce17254e1d](https://i.gyazo.com/b04e04c0a066039bc4b040ce17254e1d.png)
 
 スケッチをコンパイルしていますとなって表示されます。通常のパワーの PC であれば 1 ～ 2 分程度でコンパイルできます。
 

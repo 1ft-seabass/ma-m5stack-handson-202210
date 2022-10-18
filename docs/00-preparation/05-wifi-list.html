@@ -3,7 +3,7 @@
 <html lang="ja" >
     <head>
         <meta charset="UTF-8">
-        <title>Arduino でコンパイル検証 · タイトル</title>
+        <title>Wi-Fi につなぐ前に周辺の Wi-Fi を確認 · タイトル</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.4">
@@ -68,10 +68,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="03-usb-driver-install.html" />
+    <link rel="next" href="06-wifi-connect.html" />
     
     
-    <link rel="prev" href="01-arduino-setting.html" />
+    <link rel="prev" href="04-arduino-write.html" />
     
 
     </head>
@@ -153,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="02-arduino-test.html">
+        <li class="chapter " data-level="1.2.3" data-path="02-arduino-test.html">
             
                 <a href="02-arduino-test.html">
             
@@ -192,7 +192,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="05-wifi-list.html">
+        <li class="chapter active" data-level="1.2.6" data-path="05-wifi-list.html">
             
                 <a href="05-wifi-list.html">
             
@@ -266,7 +266,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Arduino でコンパイル検証</a>
+        <a href=".." >Wi-Fi につなぐ前に周辺の Wi-Fi を確認</a>
     </h1>
 </div>
 
@@ -281,59 +281,103 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="arduino-でコンパイル検証"><a name="arduino-でコンパイル検証" class="plugin-anchor" href="#arduino-でコンパイル検証"><i class="fa fa-link" aria-hidden="true"></i></a>Arduino でコンパイル検証</h1>
-<p>Arduino の設定ができたら、Arduino で M5Stack のソースコードがちゃんとコンパイルできるかコンパイル検証してみます。</p>
-<h2 id="注意"><a name="注意" class="plugin-anchor" href="#注意"><i class="fa fa-link" aria-hidden="true"></i></a>注意</h2>
-<p>macOS Monterey をお使いの方は、Python がの環境まわりの影響で、追加の設定が必要かもしれません。</p>
-<h2 id="このページで分かること"><a name="このページで分かること" class="plugin-anchor" href="#このページで分かること"><i class="fa fa-link" aria-hidden="true"></i></a>このページで分かること</h2>
-<ul>
-<li>M5Stack のボード設定が正しくインストールできているか</li>
-<li>M5Stack のライブラリが正しくインストールできているか</li>
-<li>M5Stack に書き込むプログラムが正しくコンパイルできるか</li>
-</ul>
-<h2 id="コンパイルできるか検証します"><a name="コンパイルできるか検証します" class="plugin-anchor" href="#コンパイルできるか検証します"><i class="fa fa-link" aria-hidden="true"></i></a>コンパイルできるか検証します</h2>
-<p><img src="https://i.gyazo.com/88be6e0a8c72e7de4e606a43952a7260.png" alt="88be6e0a8c72e7de4e606a43952a7260"></p>
-<p>メニューから ファイル &gt; 新規ファイル をクリックします。</p>
-<p><img src="https://i.gyazo.com/f3de55bf803bf58e59d3be78ac4f1796.png" alt="f3de55bf803bf58e59d3be78ac4f1796"></p>
-<p>あたらしく新規ファイルのウィンドウが開きました。</p>
-<p><img src="https://i.gyazo.com/9bb3b5f4977db6a4b07567174141cb58.png" alt="9bb3b5f4977db6a4b07567174141cb58"></p>
-<p>あたらしく新規ファイルのウィンドウの既存コードをすべて選択して削除します。</p>
+                                <h1 id="wi-fi-につなぐ前に周辺の-wi-fi-を確認"><a name="wi-fi-につなぐ前に周辺の-wi-fi-を確認" class="plugin-anchor" href="#wi-fi-につなぐ前に周辺の-wi-fi-を確認"><i class="fa fa-link" aria-hidden="true"></i></a>Wi-Fi につなぐ前に周辺の Wi-Fi を確認</h1>
+<h2 id="今回のプログラムはどのように動くか"><a name="今回のプログラムはどのように動くか" class="plugin-anchor" href="#今回のプログラムはどのように動くか"><i class="fa fa-link" aria-hidden="true"></i></a>今回のプログラムはどのように動くか</h2>
+<p><img src="https://i.gyazo.com/8656356ef8d3754cb5eba0aa4d99b58f.jpg" alt="image"></p>
+<p>書き込みと同時に周辺の Wi-Fi リストを表示します。</p>
+<h2 id="ソースコードを反映"><a name="ソースコードを反映" class="plugin-anchor" href="#ソースコードを反映"><i class="fa fa-link" aria-hidden="true"></i></a>ソースコードを反映</h2>
+<p>Arduino IDE で新規ファイルを作成し、以下のコードをコピーアンドペーストします。こちらを <code>handson-00-01-wifi-list</code> で保存します。</p>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;M5Stack.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;WiFi.h&quot;</span></span>
+
+<span class="hljs-comment">// Factory Test を抜粋</span>
+<span class="hljs-comment">// https://github.com/m5stack/M5Stack/blob/master/examples/Basics/FactoryTest/FactoryTest.ino</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">wifi_test</span><span class="hljs-params">()</span> </span>{
+    WiFi.mode(WIFI_STA);
+    WiFi.disconnect();
+    delay(<span class="hljs-number">100</span>);
+
+    Serial.println(<span class="hljs-string">&quot;scan start&quot;</span>);
+    M5.Lcd.println(<span class="hljs-string">&quot;scan start&quot;</span>);
+
+    <span class="hljs-comment">// WiFi.scanNetworks will return the number of networks found</span>
+    <span class="hljs-keyword">int</span> n = WiFi.scanNetworks();
+    Serial.println(<span class="hljs-string">&quot;scan done&quot;</span>);
+    M5.Lcd.println(<span class="hljs-string">&quot;scan done&quot;</span>);
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) {
+        Serial.println(<span class="hljs-string">&quot;no networks found&quot;</span>);
+        M5.Lcd.println(<span class="hljs-string">&quot;no networks found&quot;</span>);
+    } <span class="hljs-keyword">else</span> {
+        Serial.print(n);
+        M5.Lcd.print(n);
+        Serial.println(<span class="hljs-string">&quot; networks found&quot;</span>);
+        M5.Lcd.println(<span class="hljs-string">&quot; networks found&quot;</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) {
+            <span class="hljs-comment">// Print SSID and RSSI for each network found</span>
+            Serial.print(i + <span class="hljs-number">1</span>);
+            M5.Lcd.print(i + <span class="hljs-number">1</span>);
+            Serial.print(<span class="hljs-string">&quot;: &quot;</span>);
+            M5.Lcd.print(<span class="hljs-string">&quot;: &quot;</span>);
+            Serial.print(WiFi.SSID(i));
+            M5.Lcd.print(WiFi.SSID(i));
+            Serial.print(<span class="hljs-string">&quot; (&quot;</span>);
+            M5.Lcd.print(<span class="hljs-string">&quot; (&quot;</span>);
+            Serial.print(WiFi.RSSI(i));
+            M5.Lcd.print(WiFi.RSSI(i));
+            Serial.print(<span class="hljs-string">&quot;)&quot;</span>);
+            M5.Lcd.print(<span class="hljs-string">&quot;)&quot;</span>);
+            Serial.println((WiFi.encryptionType(i) == WIFI_AUTH_OPEN)?<span class="hljs-string">&quot; &quot;</span>:<span class="hljs-string">&quot;*&quot;</span>);
+            M5.Lcd.println((WiFi.encryptionType(i) == WIFI_AUTH_OPEN)?<span class="hljs-string">&quot; &quot;</span>:<span class="hljs-string">&quot;*&quot;</span>);
+            delay(<span class="hljs-number">5</span>);
+        }
+    }
+    Serial.println(<span class="hljs-string">&quot;&quot;</span>);
+    M5.Lcd.println(<span class="hljs-string">&quot;&quot;</span>);
+}
+
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
-  M5.begin();
 
-  M5.Lcd.println(<span class="hljs-string">&quot;Hello World&quot;</span>);
+    <span class="hljs-comment">// initialize the M5Stack object</span>
+    M5.begin();
+
+    M5.Power.begin();
+
+    M5.Lcd.setBrightness(<span class="hljs-number">100</span>);
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+    M5.Lcd.setTextColor(WHITE);
+    M5.Lcd.setTextSize(<span class="hljs-number">2</span>);
+    M5.Lcd.<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;WiFi Test!&quot;</span>);
+
+    M5.Lcd.setCursor(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    M5.Lcd.fillScreen(BLACK);
+    wifi_test();
+
 }
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
-
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span></span>{
+    M5.update();
 }
 </code></pre>
-<p>こちらのソースコードをコピーアンドペーストします。</p>
-<p><img src="https://i.gyazo.com/b2b748a47bf14190ea34e6d67a31fd45.png" alt="b2b748a47bf14190ea34e6d67a31fd45"></p>
-<p>このようになります。</p>
-<p><img src="https://i.gyazo.com/15bd321ce4ee6c70bb5e4160b3552e93.png" alt="15bd321ce4ee6c70bb5e4160b3552e93"></p>
-<p>メニューから ファイル &gt; 保存 をクリックします。</p>
-<p><img src="https://i.gyazo.com/f83083376f8808b1f545fd136824b6ea.png" alt="f83083376f8808b1f545fd136824b6ea"></p>
-<p> <code>handson-00-01-firststep</code> というファイル名で保存します。</p>
-<p><img src="https://i.gyazo.com/3cb0b0bb8ef662a84b422fd9dae3703f.png" alt="3cb0b0bb8ef662a84b422fd9dae3703f"></p>
-<p>メニューから ツール &gt; ボード &gt; M5Stack Arduino &gt; M5Stack-Core-ESP32 をクリックします。</p>
-<p><img src="https://i.gyazo.com/3cb0b0bb8ef662a84b422fd9dae3703f.png" alt="3cb0b0bb8ef662a84b422fd9dae3703f"></p>
-<p>もう一度、メニューから ツール をクリックして、このようにボードで M5Stack-Core-ESP32 が設定されているか確認します。</p>
-<p><img src="https://i.gyazo.com/1c563a06d93c49554e1cee5b0d249d4a.png" alt="1c563a06d93c49554e1cee5b0d249d4a"></p>
-<p>ボード設定ができたら検証ボタンをクリックします。</p>
-<p><img src="https://i.gyazo.com/b04e04c0a066039bc4b040ce17254e1d.png" alt="b04e04c0a066039bc4b040ce17254e1d"></p>
-<p>スケッチをコンパイルしていますとなって表示されます。通常のパワーの PC であれば 1 ～ 2 分程度でコンパイルできます。</p>
-<p><img src="https://i.gyazo.com/e96859fb5d37f1909b74aab297bac42f.png" alt="e96859fb5d37f1909b74aab297bac42f"></p>
-<p>コンパイルが完了しましたと表示されたら成功です。</p>
-<blockquote>
-<p>最大1310720バイトのフラッシュメモリのうち、スケッチが345025バイト（26%）を使っています。
-最大327680バイトのRAMのうち、グローバル変数が18700バイト（5%）を使っていて、ローカル変数で308980バイト使うことができます。</p>
-</blockquote>
-<p>このようなメッセージが出ているはずです。</p>
+<p><img src="https://i.gyazo.com/45b0fd6ce672dc9a0055d45aa290e235.png" alt="image"></p>
+<p>M5Stack に書き込んでみましょう。</p>
+<h2 id="動かしてみる"><a name="動かしてみる" class="plugin-anchor" href="#動かしてみる"><i class="fa fa-link" aria-hidden="true"></i></a>動かしてみる</h2>
+<p>書き込みと同時に周辺の Wi-Fi リストを表示します。</p>
+<p><img src="https://i.gyazo.com/8656356ef8d3754cb5eba0aa4d99b58f.jpg" alt="image"></p>
+<p>自分の作業場の Wi-Fi 名が表示されてますでしょうか。</p>
+<p>これが今後使う Wi-Fi の SSID になります。Wi-Fi につなげるパスワードを思い出しておきましょう。</p>
+<p>これでチェックできること</p>
+<ul>
+<li>Wi-Fi が M5Stack で動作していることがわかる</li>
+<li>自分の作業場の Wi-Fi が M5Stack から認識していることがわかる<ul>
+<li>実際につながないとわからないことも多いが、つながる確率はかなり高まりました！</li>
+</ul>
+</li>
+</ul>
 <h2 id="次は"><a name="次は" class="plugin-anchor" href="#次は"><i class="fa fa-link" aria-hidden="true"></i></a>次は</h2>
-<p>Arduino でコンパイル検証ができたら <a href="03-usb-driver-install.html">USB ドライバのインストール</a> を進めましょう。</p>
+<p>Wi-Fi につなぐ前に周辺の Wi-Fi を確認できたら、<a href="06-wifi-connect.html">Wi-Fi をつないでみる</a> にすすみましょう。</p>
 
                                 
                                 </section>
@@ -361,12 +405,12 @@
 
             
                 
-                <a href="01-arduino-setting.html" class="navigation navigation-prev " aria-label="Previous page: Arduino の設定">
+                <a href="04-arduino-write.html" class="navigation navigation-prev " aria-label="Previous page: M5Stack へ書き込み">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="03-usb-driver-install.html" class="navigation navigation-next " aria-label="Next page: USB ドライバのインストール">
+                <a href="06-wifi-connect.html" class="navigation navigation-next " aria-label="Next page: Wi-Fi をつないでみる">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -377,7 +421,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Arduino でコンパイル検証","level":"1.2.3","depth":2,"next":{"title":"USB ドライバのインストール","level":"1.2.4","depth":2,"path":"00-preparation/03-usb-driver-install.md","ref":"00-preparation/03-usb-driver-install.md","articles":[]},"previous":{"title":"Arduino の設定","level":"1.2.2","depth":2,"path":"00-preparation/01-arduino-setting.md","ref":"00-preparation/01-arduino-setting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"タイトル","language":"ja","gitbook":"*","description":"詳細説明"},"file":{"path":"00-preparation/02-arduino-test.md","mtime":"2022-10-18T06:10:11.842Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-18T06:32:38.876Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Wi-Fi につなぐ前に周辺の Wi-Fi を確認","level":"1.2.6","depth":2,"next":{"title":"Wi-Fi をつないでみる","level":"1.2.7","depth":2,"path":"00-preparation/06-wifi-connect.md","ref":"00-preparation/06-wifi-connect.md","articles":[]},"previous":{"title":"M5Stack へ書き込み","level":"1.2.5","depth":2,"path":"00-preparation/04-arduino-write.md","ref":"00-preparation/04-arduino-write.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"タイトル","language":"ja","gitbook":"*","description":"詳細説明"},"file":{"path":"00-preparation/05-wifi-list.md","mtime":"2022-10-18T06:20:50.021Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-18T06:32:38.876Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

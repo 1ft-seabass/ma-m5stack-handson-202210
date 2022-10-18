@@ -1,6 +1,6 @@
 {
-  "title":"タイトル",
-  "description":"詳細説明",
+  "title":"M5Stack ハンズオン資料",
+  "description":"M5Stack ハンズオン資料です。",
   "language":"ja",
   "plugins":[
     "anchors",

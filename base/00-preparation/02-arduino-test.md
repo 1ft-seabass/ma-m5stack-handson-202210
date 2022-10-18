@@ -52,7 +52,7 @@ void loop() {
 
 ![f83083376f8808b1f545fd136824b6ea](https://i.gyazo.com/f83083376f8808b1f545fd136824b6ea.png)
 
- handson-00-firststep というファイル名で保存します。
+ `handson-00-01-firststep` というファイル名で保存します。
 
 ![3cb0b0bb8ef662a84b422fd9dae3703f](https://i.gyazo.com/3cb0b0bb8ef662a84b422fd9dae3703f.png)
 

@@ -94,7 +94,7 @@ M5Stack を探します。
 
 インストールが進みます。
 
-![8c6912d5bf2524ab48801129b67b933e](https://i.gyazo.com/8c6912d5bf2524ab48801129b67b933e.png)
+![56f1d586a8f3215f24dcfc1a1a554f56](https://i.gyazo.com/56f1d586a8f3215f24dcfc1a1a554f56.png)
 
 このようにインストールが成功すると M5Stack が INSTALLED になります。
 
@@ -108,7 +108,7 @@ M5Stack を探します。
 
 このときは右下の OK ボタンをクリックして、再度ライブラリマネージャを表示して再度 M5Stack Core development kit で検索します。
 
-![8c6912d5bf2524ab48801129b67b933e](https://i.gyazo.com/8c6912d5bf2524ab48801129b67b933e.png)
+![56f1d586a8f3215f24dcfc1a1a554f56](https://i.gyazo.com/56f1d586a8f3215f24dcfc1a1a554f56.png)
 
 このようにインストールが成功していれば M5Stack が INSTALLED になります。INSTALLED になっていなければ、再度インストールしてみましょう。
 

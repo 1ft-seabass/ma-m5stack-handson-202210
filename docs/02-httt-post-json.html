@@ -1,0 +1,907 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#"></head>
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="02-httt-post-json.html">
+        <meta property="og:image" content="https://i.gyazo.com/dc47094ebac368feef6aa98c09b1c84c.png">
+        <meta property="og:title" content="[M5Stack ハンズオン資料] サーバーにメッセージを送ってみる">
+        <meta property="og:description" content="M5Stack ハンズオン資料です。">
+        <meta property="og:locale" content="ja">
+        <title>[M5Stack ハンズオン資料] サーバーにメッセージを送ってみる</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="M5Stack ハンズオン資料です。">
+        <meta name="generator" content="HonKit 3.7.4">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="03-button-display.html" />
+    
+    
+    <link rel="prev" href="01-introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-preparation/">
+            
+                <a href="00-preparation/">
+            
+                    
+                    事前準備
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="00-preparation/00-arduino-install.html">
+            
+                <a href="00-preparation/00-arduino-install.html">
+            
+                    
+                    Arduino インストール
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="00-preparation/01-arduino-setting.html">
+            
+                <a href="00-preparation/01-arduino-setting.html">
+            
+                    
+                    Arduino の設定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="00-preparation/02-arduino-test.html">
+            
+                <a href="00-preparation/02-arduino-test.html">
+            
+                    
+                    Arduino でコンパイル検証
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="00-preparation/03-usb-driver-install.html">
+            
+                <a href="00-preparation/03-usb-driver-install.html">
+            
+                    
+                    USB ドライバのインストール
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="00-preparation/04-arduino-write.html">
+            
+                <a href="00-preparation/04-arduino-write.html">
+            
+                    
+                    M5Stack へ書き込み
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="00-preparation/05-wifi-list.html">
+            
+                <a href="00-preparation/05-wifi-list.html">
+            
+                    
+                    Wi-Fi につなぐ前に周辺の Wi-Fi を確認
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="00-preparation/06-wifi-connect.html">
+            
+                <a href="00-preparation/06-wifi-connect.html">
+            
+                    
+                    Wi-Fi をつないでみる
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-introduction.html">
+            
+                <a href="01-introduction.html">
+            
+                    
+                    はじめに
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="02-httt-post-json.html">
+            
+                <a href="02-httt-post-json.html">
+            
+                    
+                    サーバーにメッセージを送ってみる
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-button-display.html">
+            
+                <a href="03-button-display.html">
+            
+                    
+                    M5Stack のボタンやディスプレイの実装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-line-notify.html">
+            
+                <a href="04-line-notify.html">
+            
+                    
+                    M5Stack から LINE Notify にメッセージを送ろう
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-sensor-pir.html">
+            
+                <a href="05-sensor-pir.html">
+            
+                    
+                    Grove 人感センサー（PIR センサー）を動かす
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-sensor-light.html">
+            
+                <a href="06-sensor-light.html">
+            
+                    
+                    Grove 光センサー を動かす
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="07-sensor-ultrasonic.html">
+            
+                <a href="07-sensor-ultrasonic.html">
+            
+                    
+                    Grove 超音波距離センサ を動かす
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="08-sensor-temp-humd.html">
+            
+                <a href="08-sensor-temp-humd.html">
+            
+                    
+                    Grove 温度・湿度センサー を動かす
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="09-mqtt-m5stack.html">
+            
+                <a href="09-mqtt-m5stack.html">
+            
+                    
+                    MQTT を使って M5Stack の遠隔ディスプレイ制御をしよう
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="10-servo.html">
+            
+                <a href="10-servo.html">
+            
+                    
+                    Grove サーボモータ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >サーバーにメッセージを送ってみる</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="サーバーにメッセージを送ってみる"><a name="サーバーにメッセージを送ってみる" class="plugin-anchor" href="#サーバーにメッセージを送ってみる"><i class="fa fa-link" aria-hidden="true"></i></a>サーバーにメッセージを送ってみる</h1>
+<h2 id="今回のプログラムはどのように動くか"><a name="今回のプログラムはどのように動くか" class="plugin-anchor" href="#今回のプログラムはどのように動くか"><i class="fa fa-link" aria-hidden="true"></i></a>今回のプログラムはどのように動くか</h2>
+<p><img src="https://i.gyazo.com/416402edf3476298c3065d0500962a92.png" alt="image"></p>
+<p>このような仕組みです。</p>
+<p><img src="https://i.gyazo.com/e9c21a3d286467ed300b2ac6e1f48ad7.jpg" alt="image"></p>
+<p>起動時にサーバーにメッセージが送られ、その後、各ボタンをクリックしてサーバーにメッセージが送られます。</p>
+<h2 id="テストサーバーを用意しました"><a name="テストサーバーを用意しました" class="plugin-anchor" href="#テストサーバーを用意しました"><i class="fa fa-link" aria-hidden="true"></i></a>テストサーバーを用意しました</h2>
+<p><img src="https://i.gyazo.com/b9f26a859d98bbee5dc509b2cfe3aaa2.png" alt="image"></p>
+<p>授業のためにテストサーバーを用意しました</p>
+<p><a href="https://app-1ft-iot-test-server.herokuapp.com/ui" target="_blank">https://app-1ft-iot-test-server.herokuapp.com/ui</a></p>
+<ul>
+<li>こういうサーバーがあるとデータがちゃんと届いているかのチェックがしやすいです</li>
+<li>ひとまず今回は HTTP で受信するとログが出ます</li>
+<li>時間に余裕があれば軽くデモします</li>
+</ul>
+<h2 id="ソースコードを反映"><a name="ソースコードを反映" class="plugin-anchor" href="#ソースコードを反映"><i class="fa fa-link" aria-hidden="true"></i></a>ソースコードを反映</h2>
+<p>Arduino IDE で新規ファイルを作成し、以下のコードをコピーアンドペーストします。こちらを <code>handson-Test-HTTP-POST-JSON</code> で保存します。</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;M5Stack.h&gt;</span></span>
+
+<span class="hljs-comment">// HTTP 通信を行うライブラリ</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;HTTPClient.h&gt;</span></span>
+
+<span class="hljs-comment">// Wi-FiのSSID</span>
+<span class="hljs-keyword">char</span> *ssid = <span class="hljs-string">&quot;Wi-FiのSSID&quot;</span>;
+<span class="hljs-comment">// Wi-Fiのパスワード</span>
+<span class="hljs-keyword">char</span> *password = <span class="hljs-string">&quot;Wi-Fiのパスワード&quot;</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">// init lcd, serial, but don&apos;t init sd card</span>
+  <span class="hljs-comment">// LCD ディスプレイとシリアルは動かして、SDカードは動かさない設定</span>
+  M5.begin(<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>);
+
+  <span class="hljs-comment">// スタート</span>
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+  M5.Lcd.setTextColor(WHITE);
+  M5.Lcd.setTextSize(<span class="hljs-number">2</span>);
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  Serial.print(<span class="hljs-string">&quot;START&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出す</span>
+  M5.Lcd.print(<span class="hljs-string">&quot;START&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す（英語のみ）</span>
+
+  <span class="hljs-comment">// WiFi 接続開始</span>
+  WiFi.begin(ssid, password);
+  <span class="hljs-comment">// 勝手に Button A が押されることを回避</span>
+  WiFi.setSleep(<span class="hljs-literal">false</span>);
+
+  <span class="hljs-keyword">while</span> (WiFi.status() != WL_CONNECTED) {
+      delay(<span class="hljs-number">500</span>);
+
+      <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+      Serial.print(<span class="hljs-string">&quot;.&quot;</span>);
+      M5.Lcd.print(<span class="hljs-string">&quot;.&quot;</span>);
+  }
+
+  <span class="hljs-comment">// WiFi Connected</span>
+  <span class="hljs-comment">// WiFi 接続完了</span>
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">40</span>);
+  M5.Lcd.setTextColor(WHITE);
+  M5.Lcd.setTextSize(<span class="hljs-number">2</span>);
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  <span class="hljs-comment">// 前のメッセージが print で改行入っていないので println で一つ入れる</span>
+  Serial.println(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出し改行が最後に入る</span>
+  M5.Lcd.println(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す改行が最後に入る（英語のみ） </span>
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  Serial.println(<span class="hljs-string">&quot;WiFi Connected.&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出す</span>
+  M5.Lcd.println(<span class="hljs-string">&quot;WiFi Connected.&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す（英語のみ）</span>
+
+  <span class="hljs-comment">// 起動時に送る</span>
+  delay(<span class="hljs-number">1000</span>);
+  send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Launched!\&quot;}&quot;</span>);
+}
+
+<span class="hljs-comment">// HTTP でメッセージ送信部分</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send_message</span><span class="hljs-params">(String msg)</span> </span>{
+
+  <span class="hljs-comment">// 今回送るURL</span>
+  String url = <span class="hljs-string">&quot;https://app-1ft-iot-test-server.herokuapp.com/api/test/message&quot;</span>;
+
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+
+  M5.Lcd.println(<span class="hljs-string">&quot;-&gt; send_message&quot;</span>);
+  M5.Lcd.print(<span class="hljs-string">&quot;msg: &quot;</span>);
+  M5.Lcd.println(msg);
+
+  <span class="hljs-comment">// 送るデータ</span>
+  String queryString = msg;
+  <span class="hljs-comment">// HTTPClient 準備</span>
+  HTTPClient httpClient;
+  <span class="hljs-comment">// URL 設定</span>
+  httpClient.begin(url);
+  <span class="hljs-comment">// Content-Type</span>
+  httpClient.addHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>);
+
+  M5.Lcd.println(<span class="hljs-string">&quot;sended.&quot;</span>);
+  Serial.println(<span class="hljs-string">&quot;sended.&quot;</span>);
+
+  <span class="hljs-comment">// ポストする</span>
+  <span class="hljs-keyword">int</span> status_code = httpClient.POST(queryString);
+  <span class="hljs-keyword">if</span>( status_code == <span class="hljs-number">200</span> ){
+    String response = httpClient.getString();
+
+    M5.Lcd.println(<span class="hljs-string">&quot;response:&quot;</span>);
+    M5.Lcd.println(response);
+  }
+  httpClient.end();
+
+  delay(<span class="hljs-number">2000</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  M5.update();
+
+  <span class="hljs-keyword">if</span> (M5.BtnA.wasReleased()) {
+    <span class="hljs-comment">// A ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// \&quot; はダブルクォーテーションで囲まれた中で JSON 内のダブルクォーテーションを表現するために \&quot; でエスケープしてます。</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed A\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnB.wasReleased()) {
+    <span class="hljs-comment">// B ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed B\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnC.wasReleased()) {
+    <span class="hljs-comment">// C ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed C\&quot;}&quot;</span>);
+  }
+}
+</code></pre>
+<h2 id="wi-fi-情報を反映して、また保存"><a name="wi-fi-情報を反映して、また保存" class="plugin-anchor" href="#wi-fi-情報を反映して、また保存"><i class="fa fa-link" aria-hidden="true"></i></a>Wi-Fi 情報を反映して、また保存</h2>
+<pre><code class="lang-c"><span class="hljs-comment">// Wi-FiのSSID</span>
+<span class="hljs-keyword">char</span> *ssid = <span class="hljs-string">&quot;Wi-FiのSSID&quot;</span>;
+<span class="hljs-comment">// Wi-Fiのパスワード</span>
+<span class="hljs-keyword">char</span> *password = <span class="hljs-string">&quot;Wi-Fiのパスワード&quot;</span>;
+</code></pre>
+<p>先ほどと同じように Wi-Fi 情報を反映します。もう一度保存します。（大事）</p>
+<p><img src="https://i.gyazo.com/45b0fd6ce672dc9a0055d45aa290e235.png" alt="image"></p>
+<p>M5Stack に書き込んでみましょう。</p>
+<h2 id="動かしてみる"><a name="動かしてみる" class="plugin-anchor" href="#動かしてみる"><i class="fa fa-link" aria-hidden="true"></i></a>動かしてみる</h2>
+<p><img src="https://i.gyazo.com/e9c21a3d286467ed300b2ac6e1f48ad7.jpg" alt="image"></p>
+<p>起動時に サーバーに <code>{&quot;message&quot;:&quot;Launched!&quot;}</code> という JSON データが送られます。</p>
+<p>また、3つボタンが並んでいますが、Aボタン、Bボタン、Cボタンでプログラムと対応しています。クリックしてサーバーにメッセージが送られるか確認してみましょう。</p>
+<p>たとえば、Cボタンをクリックすると <code>{&quot;message&quot;:&quot;Pushed C&quot;}</code> という JSON データが送られます。</p>
+<h1 id="送るデータを変更してみる（書き換え訓練）"><a name="送るデータを変更してみる（書き換え訓練）" class="plugin-anchor" href="#送るデータを変更してみる（書き換え訓練）"><i class="fa fa-link" aria-hidden="true"></i></a>送るデータを変更してみる（書き換え訓練）</h1>
+<p>これだと送った人が分からないので、英数字で自分の名前を決めて、送るデータをちょっと書き換えましょう。</p>
+<h2 id="launched-メッセージをちょっと変更"><a name="launched-メッセージをちょっと変更" class="plugin-anchor" href="#launched-メッセージをちょっと変更"><i class="fa fa-link" aria-hidden="true"></i></a>Launched メッセージをちょっと変更</h2>
+<pre><code class="lang-c">  <span class="hljs-comment">// 起動時に送る</span>
+  delay(<span class="hljs-number">1000</span>);
+  send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Launched!\&quot;}&quot;</span>);
+</code></pre>
+<p>を、以下のように書き加えます。Seigo で変更した例です。</p>
+<pre><code class="lang-c">  <span class="hljs-comment">// 起動時に送る</span>
+  delay(<span class="hljs-number">1000</span>);
+  send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Seigo Launched!\&quot;}&quot;</span>);
+</code></pre>
+<h2 id="ボタンを押したときのメッセージをちょっと変更"><a name="ボタンを押したときのメッセージをちょっと変更" class="plugin-anchor" href="#ボタンを押したときのメッセージをちょっと変更"><i class="fa fa-link" aria-hidden="true"></i></a>ボタンを押したときのメッセージをちょっと変更</h2>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  M5.update();
+
+  <span class="hljs-keyword">if</span> (M5.BtnA.wasReleased()) {
+    <span class="hljs-comment">// A ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// \&quot; はダブルクォーテーションで囲まれた中で JSON 内のダブルクォーテーションを表現するために \&quot; でエスケープしてます。</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed A\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnB.wasReleased()) {
+    <span class="hljs-comment">// B ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed B\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnC.wasReleased()) {
+    <span class="hljs-comment">// C ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Pushed C\&quot;}&quot;</span>);
+  }
+}
+</code></pre>
+<p>を、以下のように書き加えます。Seigo で変更した例です。</p>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  M5.update();
+
+  <span class="hljs-keyword">if</span> (M5.BtnA.wasReleased()) {
+    <span class="hljs-comment">// A ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// \&quot; はダブルクォーテーションで囲まれた中で JSON 内のダブルクォーテーションを表現するために \&quot; でエスケープしてます。</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Seigo Pushed A\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnB.wasReleased()) {
+    <span class="hljs-comment">// B ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Seigo Pushed B\&quot;}&quot;</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnC.wasReleased()) {
+    <span class="hljs-comment">// C ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Seigo Pushed C\&quot;}&quot;</span>);
+  }
+}
+</code></pre>
+<h2 id="余談：英数字で顔文字表現テクニック"><a name="余談：英数字で顔文字表現テクニック" class="plugin-anchor" href="#余談：英数字で顔文字表現テクニック"><i class="fa fa-link" aria-hidden="true"></i></a>余談：英数字で顔文字表現テクニック</h2>
+<p>もし余裕があれば、</p>
+<ul>
+<li><code>(^_^)</code></li>
+<li><code>(=_=)</code></li>
+<li><code>:-)</code></li>
+<li><code>;-)</code></li>
+<li><code>(*o*)/</code></li>
+</ul>
+<p>のような顔文字は英数字でも表現できるので、ぜひ試してみましょう～。</p>
+<h2 id="エクストラ--arduinojson"><a name="エクストラ--arduinojson" class="plugin-anchor" href="#エクストラ--arduinojson"><i class="fa fa-link" aria-hidden="true"></i></a>エクストラ : ArduinoJson</h2>
+<p><code>send_message(&quot;{\&quot;message\&quot;:\&quot;Pushed A\&quot;}&quot;);</code> という書き方で JSON を作るのはシンプルな値では何とかなりますが複雑なデータを作ったり読み込んだりするケースでツラくなってきます。</p>
+<p><img src="https://i.gyazo.com/af6c2d79d0fb6907a4b8ed888ade6f09.jpg" alt="af6c2d79d0fb6907a4b8ed888ade6f09"></p>
+<p>そのときは、<a href="https://arduinojson.org/" target="_blank">ArduinoJson</a> というライブラリを使いましょう。 JSON データが格段に扱いやすくなります。</p>
+<pre><code class="lang-c"><span class="hljs-comment">// JSON を格納するオブジェクト DynamicJsonDocument</span>
+<span class="hljs-function">DynamicJsonDocument <span class="hljs-title">doc</span><span class="hljs-params">(<span class="hljs-number">255</span>)</span></span>;
+<span class="hljs-comment">// JSON データ作成</span>
+doc[<span class="hljs-string">&quot;message&quot;</span>] = <span class="hljs-string">&quot;Pushed A&quot;</span>;
+<span class="hljs-comment">// 変換後の char を準備</span>
+<span class="hljs-keyword">char</span> serializedJsonString[<span class="hljs-number">255</span>];
+<span class="hljs-comment">// JSON オブジェクトを String に変換して serializedJsonString 変数に格納</span>
+<span class="hljs-comment">// 中身は {&quot;message&quot;:&quot;Pushed A&quot;}</span>
+serializeJson(doc,serializedJsonString);
+<span class="hljs-comment">// send_message 関数に serializedJsonString を送る</span>
+send_message(serializedJsonString);
+</code></pre>
+<p>たとえば、このように JSON を格納するオブジェクト DynamicJsonDocument を作成し、JSON データ作成したあと、変換後の String を準備して serializeJson 関数で JSON オブジェクトを String に変換して serializedJsonString 変数に格納します。</p>
+<ul>
+<li>メニュー &gt; ツール &gt; ライブラリを管理</li>
+<li>ライブラリから ArduinoJson を完全一致で検索</li>
+<li>ArduinoJson が見つかったらインストール</li>
+</ul>
+<p>でインストールを済ませたら、該当のコードで <code>#include &lt;ArduinoJson.h&gt;</code> で呼び出して使います。</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;M5Stack.h&gt;</span></span>
+
+<span class="hljs-comment">// HTTP 通信を行うライブラリ</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;HTTPClient.h&gt;</span></span>
+
+<span class="hljs-comment">// Wi-FiのSSID</span>
+<span class="hljs-keyword">char</span> *ssid = <span class="hljs-string">&quot;Wi-FiのSSID&quot;</span>;
+<span class="hljs-comment">// Wi-Fiのパスワード</span>
+<span class="hljs-keyword">char</span> *password = <span class="hljs-string">&quot;Wi-Fiのパスワード&quot;</span>;
+
+<span class="hljs-comment">// JSON を扱いやすくするライブラリ</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ArduinoJson.h&gt;</span></span>
+<span class="hljs-comment">// JSON を格納するオブジェクト DynamicJsonDocument</span>
+<span class="hljs-function">DynamicJsonDocument <span class="hljs-title">doc</span><span class="hljs-params">(<span class="hljs-number">255</span>)</span></span>;
+<span class="hljs-comment">// 変換後の char を準備</span>
+<span class="hljs-keyword">char</span> serializedJsonString[<span class="hljs-number">255</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">// init lcd, serial, but don&apos;t init sd card</span>
+  <span class="hljs-comment">// LCD ディスプレイとシリアルは動かして、SDカードは動かさない設定</span>
+  M5.begin(<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>);
+
+  <span class="hljs-comment">// スタート</span>
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+  M5.Lcd.setTextColor(WHITE);
+  M5.Lcd.setTextSize(<span class="hljs-number">2</span>);
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  Serial.print(<span class="hljs-string">&quot;START&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出す</span>
+  M5.Lcd.print(<span class="hljs-string">&quot;START&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す（英語のみ）</span>
+
+  <span class="hljs-comment">// WiFi 接続開始</span>
+  WiFi.begin(ssid, password);
+  <span class="hljs-comment">// 勝手に Button A が押されることを回避</span>
+  WiFi.setSleep(<span class="hljs-literal">false</span>);
+
+  <span class="hljs-keyword">while</span> (WiFi.status() != WL_CONNECTED) {
+      delay(<span class="hljs-number">500</span>);
+
+      <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+      Serial.print(<span class="hljs-string">&quot;.&quot;</span>);
+      M5.Lcd.print(<span class="hljs-string">&quot;.&quot;</span>);
+  }
+
+  <span class="hljs-comment">// WiFi Connected</span>
+  <span class="hljs-comment">// WiFi 接続完了</span>
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">40</span>);
+  M5.Lcd.setTextColor(WHITE);
+  M5.Lcd.setTextSize(<span class="hljs-number">2</span>);
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  <span class="hljs-comment">// 前のメッセージが print で改行入っていないので println で一つ入れる</span>
+  Serial.println(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出し改行が最後に入る</span>
+  M5.Lcd.println(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す改行が最後に入る（英語のみ） </span>
+
+  <span class="hljs-comment">// Arduino のシリアルモニタ・M5Stack LCDディスプレイ両方にメッセージを出す</span>
+  Serial.println(<span class="hljs-string">&quot;WiFi Connected.&quot;</span>);  <span class="hljs-comment">// Arduino のシリアルモニタにメッセージを出す</span>
+  M5.Lcd.println(<span class="hljs-string">&quot;WiFi Connected.&quot;</span>);  <span class="hljs-comment">// M5Stack LCDディスプレイにメッセージを出す（英語のみ）</span>
+
+  <span class="hljs-comment">// 起動時に送る</span>
+  delay(<span class="hljs-number">1000</span>);
+  send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Launched!\&quot;}&quot;</span>);
+}
+
+<span class="hljs-comment">// HTTP でメッセージ送信部分</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send_message</span><span class="hljs-params">(String msg)</span> </span>{
+
+  <span class="hljs-comment">// 今回送るURL</span>
+  String url = <span class="hljs-string">&quot;https://app-1ft-iot-test-server.herokuapp.com/api/test/message&quot;</span>;
+
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+
+  M5.Lcd.println(<span class="hljs-string">&quot;-&gt; send_message&quot;</span>);
+  M5.Lcd.print(<span class="hljs-string">&quot;msg: &quot;</span>);
+  M5.Lcd.println(msg);
+
+  <span class="hljs-comment">// 送るデータ</span>
+  String queryString = msg;
+  <span class="hljs-comment">// HTTPClient 準備</span>
+  HTTPClient httpClient;
+  <span class="hljs-comment">// URL 設定</span>
+  httpClient.begin(url);
+  <span class="hljs-comment">// Content-Type</span>
+  httpClient.addHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>);
+
+  M5.Lcd.println(<span class="hljs-string">&quot;sended.&quot;</span>);
+  Serial.println(<span class="hljs-string">&quot;sended.&quot;</span>);
+
+  <span class="hljs-comment">// ポストする</span>
+  <span class="hljs-keyword">int</span> status_code = httpClient.POST(queryString);
+  <span class="hljs-keyword">if</span>( status_code == <span class="hljs-number">200</span> ){
+    String response = httpClient.getString();
+
+    M5.Lcd.println(<span class="hljs-string">&quot;response:&quot;</span>);
+    M5.Lcd.println(response);
+  }
+  httpClient.end();
+
+  delay(<span class="hljs-number">2000</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  M5.update();
+
+  <span class="hljs-keyword">if</span> (M5.BtnA.wasReleased()) {
+    <span class="hljs-comment">// A ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// JSON データ作成</span>
+    doc[<span class="hljs-string">&quot;message&quot;</span>] = <span class="hljs-string">&quot;Pushed A&quot;</span>;
+    <span class="hljs-comment">// JSON 変換</span>
+    serializeJson(doc,serializedJsonString);
+    <span class="hljs-comment">// データを送る</span>
+    send_message(serializedJsonString);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnB.wasReleased()) {
+    <span class="hljs-comment">// B ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// JSON データ作成</span>
+    doc[<span class="hljs-string">&quot;message&quot;</span>] = <span class="hljs-string">&quot;Pushed B&quot;</span>;
+    <span class="hljs-comment">// JSON 変換</span>
+    serializeJson(doc,serializedJsonString);
+    <span class="hljs-comment">// データを送る</span>
+    send_message(serializedJsonString);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnC.wasReleased()) {
+    <span class="hljs-comment">// C ボタンを押したら JSON 形式のメッセージを飛ばす</span>
+    <span class="hljs-comment">// JSON データ作成</span>
+    doc[<span class="hljs-string">&quot;message&quot;</span>] = <span class="hljs-string">&quot;Pushed C&quot;</span>;
+    <span class="hljs-comment">// JSON 変換</span>
+    serializeJson(doc,serializedJsonString);
+    <span class="hljs-comment">// データを送る</span>
+    send_message(serializedJsonString);
+  }
+}
+</code></pre>
+<h2 id="次は"><a name="次は" class="plugin-anchor" href="#次は"><i class="fa fa-link" aria-hidden="true"></i></a>次は</h2>
+<p>左のメニューから、次に進みましょう。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01-introduction.html" class="navigation navigation-prev " aria-label="Previous page: はじめに">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="03-button-display.html" class="navigation navigation-next " aria-label="Next page: M5Stack のボタンやディスプレイの実装">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"サーバーにメッセージを送ってみる","level":"1.4","depth":1,"next":{"title":"M5Stack のボタンやディスプレイの実装","level":"1.5","depth":1,"path":"03-button-display.md","ref":"03-button-display.md","articles":[]},"previous":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"02-httt-post-json.md","mtime":"2022-10-24T04:52:50.929Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-24T23:35:18.725Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>

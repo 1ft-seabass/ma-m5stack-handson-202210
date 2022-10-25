@@ -5,12 +5,12 @@
         <meta charset="UTF-8">
         <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#"></head>
         <meta property="og:type" content="article">
-        <meta property="og:url" content="04-line-notify.html">
+        <meta property="og:url" content="11-airtable.html">
         <meta property="og:image" content="https://i.gyazo.com/dc47094ebac368feef6aa98c09b1c84c.png">
-        <meta property="og:title" content="[M5Stack ハンズオン資料] M5Stack から LINE Notify にメッセージを送ろう">
+        <meta property="og:title" content="[M5Stack ハンズオン資料] Airtable にデータを書き込んでみよう">
         <meta property="og:description" content="M5Stack ハンズオン資料です。">
         <meta property="og:locale" content="ja">
-        <title>[M5Stack ハンズオン資料] M5Stack から LINE Notify にメッセージを送ろう</title>
+        <title>[M5Stack ハンズオン資料] Airtable にデータを書き込んでみよう</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="M5Stack ハンズオン資料です。">
         <meta name="generator" content="HonKit 3.7.4">
@@ -75,10 +75,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="05-sensor-pir.html" />
     
-    
-    <link rel="prev" href="03-button-display.html" />
+    <link rel="prev" href="10-servo.html" />
     
 
     </head>
@@ -269,7 +267,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="04-line-notify.html">
+        <li class="chapter " data-level="1.6" data-path="04-line-notify.html">
             
                 <a href="04-line-notify.html">
             
@@ -360,7 +358,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="11-airtable.html">
+        <li class="chapter active" data-level="1.13" data-path="11-airtable.html">
             
                 <a href="11-airtable.html">
             
@@ -403,7 +401,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >M5Stack から LINE Notify にメッセージを送ろう</a>
+        <a href="." >Airtable にデータを書き込んでみよう</a>
     </h1>
 </div>
 
@@ -418,76 +416,68 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="m5stack-から-line-notify-にメッセージを送ろう"><a name="m5stack-から-line-notify-にメッセージを送ろう" class="plugin-anchor" href="#m5stack-から-line-notify-にメッセージを送ろう"><i class="fa fa-link" aria-hidden="true"></i></a>M5Stack から LINE Notify にメッセージを送ろう</h1>
-<h2 id="line-notify-とは"><a name="line-notify-とは" class="plugin-anchor" href="#line-notify-とは"><i class="fa fa-link" aria-hidden="true"></i></a>LINE Notify とは</h2>
-<p><img src="https://i.gyazo.com/5cf50e16f926ec4f0bdc17f76b5558e5.png" alt="image"></p>
-<p>LINE Notify の大まかな仕組みを把握します。</p>
-<p><img src="https://i.gyazo.com/5ee7b4482f1b28caaf860e72744cd2f5.png" alt="image"></p>
-<p>LINE Notify <a href="https://notify-bot.line.me/ja/" target="_blank">https://notify-bot.line.me/ja/</a></p>
-<blockquote>
-<p>Webサービスと連携すると、LINEが提供する公式アカウント&quot;LINE Notify&quot;から通知が届きます。
-複数のサービスと連携でき、グループでも通知を受信することが可能です。</p>
-</blockquote>
-<p><img src="https://i.gyazo.com/8dddc3621b4a77af65be36d7907cd02a.png" alt="image"></p>
-<p>つまり「LINE Notifyと連携を行うことで、LINEユーザーが簡単にサービスの通知を受信できるようになります」</p>
-<h2 id="iot-における通知"><a name="iot-における通知" class="plugin-anchor" href="#iot-における通知"><i class="fa fa-link" aria-hidden="true"></i></a>IoT における通知</h2>
-<p>LINE Notify のような IoT における通知の重要性を把握します。</p>
-<p><img src="https://i.gyazo.com/9e70b598a6e055b9b1a7ddab800f6f8a.png" alt="image"></p>
-<p>自分の LINE に通知としてメッセージを受け取ることができる仕組みです。</p>
+                                <h1 id="airtable-にデータを書き込んでみよう"><a name="airtable-にデータを書き込んでみよう" class="plugin-anchor" href="#airtable-にデータを書き込んでみよう"><i class="fa fa-link" aria-hidden="true"></i></a>Airtable にデータを書き込んでみよう</h1>
+<h2 id="airtable-というクラウド型データベース"><a name="airtable-というクラウド型データベース" class="plugin-anchor" href="#airtable-というクラウド型データベース"><i class="fa fa-link" aria-hidden="true"></i></a>Airtable というクラウド型データベース</h2>
+<p>Airtable <a href="https://www.airtable.com/" target="_blank">https://www.airtable.com/</a> というクラウド型データベースを触ってみます。</p>
+<p><img src="https://i.gyazo.com/e5f34a332182a4e0a07abedd1354df68.png" alt="e5f34a332182a4e0a07abedd1354df68"></p>
+<p>Google スプレッドシートのような見た目で Web から GUI でデータを作成・更新・削除・検索できます。また、API も充実していて使いやすくデータを操作することができます。</p>
+<p><img src="https://i.gyazo.com/3774deda3b412fb22b9e50b95d2e4a88.png" alt="3774deda3b412fb22b9e50b95d2e4a88"></p>
+<p>2022 年 10 月現在 Pricing <a href="https://airtable.com/pricing" target="_blank">https://airtable.com/pricing</a> を見てみると</p>
+<p>　V 無制限の Base
+　V Base あたり1,200レコード
+　V Base あたり2GBの添付ファイル
+　V グリッド、カレンダー、かんばん、フォーム、およびギャラリービュー</p>
+<p>が無料枠で含まれるので、とりあえず触ってみても基本的な機能を体験しやすいものになっています。</p>
+<h2 id="参考文献"><a name="参考文献" class="plugin-anchor" href="#参考文献"><i class="fa fa-link" aria-hidden="true"></i></a>参考文献</h2>
+<p>以下の記事を参考に進めていきます。</p>
+<p>M5Stack から HTTPS で Airtable にデータを書き込むメモ – 1ft-seabass.jp.MEMO
+<a href="https://www.1ft-seabass.jp/memo/2021/10/07/m5stack-airtable-api-connect/" target="_blank">https://www.1ft-seabass.jp/memo/2021/10/07/m5stack-airtable-api-connect/</a></p>
+<p>WiFiClientSecure でなく HTTPClient を使って M5Stack から HTTPS で Airtable にデータを書き込むメモ – 1ft-seabass.jp.MEMO
+<a href="https://www.1ft-seabass.jp/memo/2022/05/14/m5stack-airtable-api-connect-using-httpclient/" target="_blank">https://www.1ft-seabass.jp/memo/2022/05/14/m5stack-airtable-api-connect-using-httpclient/</a></p>
+<h2 id="こんな風に動きます"><a name="こんな風に動きます" class="plugin-anchor" href="#こんな風に動きます"><i class="fa fa-link" aria-hidden="true"></i></a>こんな風に動きます</h2>
+<p><img src="https://i.gyazo.com/8e887fd687c9fc61872cd58ef4665f8b.jpg" alt="8e887fd687c9fc61872cd58ef4665f8b"></p>
+<p><a href="https://twitter.com/1ft_seabass/status/1445907473429188613" target="_blank">https://twitter.com/1ft_seabass/status/1445907473429188613</a></p>
+<p>このように M5Stack からボタンを押すと、Airtable に直接データが保存されます！アツい。</p>
+<h2 id="airtable-の-base-の準備"><a name="airtable-の-base-の準備" class="plugin-anchor" href="#airtable-の-base-の準備"><i class="fa fa-link" aria-hidden="true"></i></a>Airtable の Base の準備</h2>
+<p>Airtable にログインします。</p>
+<p><img src="https://i.gyazo.com/8dd1852c028cfa78a1d0f69744b730e5.png" alt="8dd1852c028cfa78a1d0f69744b730e5"></p>
+<p><a href="https://airtable.com/shrIlpDKwspRHenHm" target="_blank">https://airtable.com/shrIlpDKwspRHenHm</a></p>
+<p>こちらの URL で今回使う Base の自動で作ってくれるひな形（テンプレート）を準備します。</p>
+<p><img src="https://i.gyazo.com/894d3fed4cf14837cc40a7da1c623f58.png" alt="894d3fed4cf14837cc40a7da1c623f58"></p>
+<p>Use this data ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/d877169f6e0222a296370243b37f18ed.png" alt="d877169f6e0222a296370243b37f18ed"></p>
+<p>このひな形を自分のワークスペースにどう使うかが聞かれます。</p>
+<p><img src="https://i.gyazo.com/113b1e7f919520b5bd83ad1a9f23b913.png" alt="113b1e7f919520b5bd83ad1a9f23b913"></p>
+<p>自分のワークスペースを選びます。</p>
+<p><img src="https://i.gyazo.com/d28cbda4d6a417b95636842b553675f8.png" alt="d28cbda4d6a417b95636842b553675f8"></p>
+<p>Base は今回新しく作るので Create new base in Workspace をクリックします。</p>
+<p><img src="https://i.gyazo.com/69e514d64c6127caca7d23e968a6111b.png" alt="69e514d64c6127caca7d23e968a6111b"></p>
+<p>設定できたら Create table ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/2a5a28fa881b1990caab757e8322b5e0.png" alt="2a5a28fa881b1990caab757e8322b5e0"></p>
+<p>今回の Base に移動して出来上がりました。これで作成完了です。</p>
+<h3 id="もし自分でつくる場合は"><a name="もし自分でつくる場合は" class="plugin-anchor" href="#もし自分でつくる場合は"><i class="fa fa-link" aria-hidden="true"></i></a>もし自分でつくる場合は</h3>
+<p>もし自分でつくる場合は、以下の手順を行いましょう。（今回のハンズオン内では、上記のひな型からの作成です）</p>
+<p><img src="https://i.gyazo.com/8b5382feffb40991dd4adb70e2326aac.png" alt="8b5382feffb40991dd4adb70e2326aac"></p>
+<p>Airtable には Add a base ボタンをクリックして Start from scratch ボタンで作られる、Base の内容をそのまま利用しています。</p>
+<p><img src="https://i.gyazo.com/cdc50243e590b6bdf331d02040109d64.png" alt="cdc50243e590b6bdf331d02040109d64"></p>
+<p>Name , Notes , Attachments , Status がある初期状態のテーブルがあります。</p>
 <ul>
-<li>自分から見に行かなくてもメッセージで知らせてくれる仕組み</li>
-<li>複数人に一斉にメッセージを受け取る仕組み</li>
-<li>何かしらの情報をまとめて知らせてくれる仕組み</li>
+<li>Notes , Attachments , Status のフィールドを削除</li>
+<li>残った Name のフィールドの名前を Data に変更</li>
+<li>3 行の初期の空データがあるので選択して削除</li>
 </ul>
-<p>といったものを作ることができます。</p>
-<p>自分たちが設定した情報だけを手軽に LINE ユーザーに配信できるので、WEB アプリの仕組みと相性がよく「こういう通知内容は実際役に立つだろうか？」といった形で、自分たちの考えた発想を試しやすいです。</p>
-<p>また、そういったメッセージを受け付ける部分を LINE に任せることで、LINE アプリの使い慣れた洗練されたレイアウトで、すぐにメッセージを表示できることも良い点です。</p>
-<p>もし、このレベルに使いやすい仕組みを自分でイチからつくるとなると、WEB サーバーの知識・HTML/CSS/JavaScript といった WEB 表示の知識・セキュリティへの配慮・多くのユーザーがいる状況などなど整えるべきことが数多くあります。「こういう通知内容は実際役に立つだろうか？」というシンプルな試行錯誤をするまでに、たくさんの時間がかかります。</p>
-<p>このあたりを、LINE Nofity および LINE アプリで、すぐに試せるというのは、自分たちの構想を試して良くしていくときには強い味方になります。</p>
-<h2 id="line-notify-事例"><a name="line-notify-事例" class="plugin-anchor" href="#line-notify-事例"><i class="fa fa-link" aria-hidden="true"></i></a>LINE Notify 事例</h2>
-<p>LINE Notify に関する使いどころ（ユースケース）を個人面・IoT事例面で把握します</p>
-<ul>
-<li>個人面<ul>
-<li>自分の興味のありそうなカテゴリのニュースを定期的に通知</li>
-<li>家族共有の Google カレンダーが更新されると通知して共有</li>
-</ul>
-</li>
-<li>IoT事例面<ul>
-<li>温度・湿度センサーを設置しておき熱中症アラートを出す（冷房を促すこともセットで）</li>
-<li>CO2 センサーを設置しておき一定量の濃度に到達したら換気を促す</li>
-<li>新生児の健康指標事例<ul>
-<li><a href="https://www.1ft-seabass.jp/memo/2019/11/06/unko-button-getting-start/" target="_blank">https://www.1ft-seabass.jp/memo/2019/11/06/unko-button-getting-start/</a></li>
-<li><a href="https://www.1ft-seabass.jp/memo/2020/07/13/summary-of-oyako-tech-lt/" target="_blank">https://www.1ft-seabass.jp/memo/2020/07/13/summary-of-oyako-tech-lt/</a></li>
-</ul>
-</li>
-<li>事例<ul>
-<li><a href="https://speakerdeck.com/1ftseabass/developers-summit-2021" target="_blank">https://speakerdeck.com/1ftseabass/developers-summit-2021</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="今回のプログラムはどのように動くか"><a name="今回のプログラムはどのように動くか" class="plugin-anchor" href="#今回のプログラムはどのように動くか"><i class="fa fa-link" aria-hidden="true"></i></a>今回のプログラムはどのように動くか</h2>
-<p><img src="https://i.gyazo.com/d4f219471329ee42c7d2b291e7272873.png" alt="image"></p>
-<p>このような仕組みです。</p>
-<p><img src="https://i.gyazo.com/e49942702a7683010b16a76d797d83e2.jpg" alt="image"></p>
-<p>Aボタン、Bボタン、Cボタンをクリックすると LINE Notify サーバーにメッセージが送られます。</p>
-<p><img src="https://i.gyazo.com/9bc36d121afc4ac5e8b71a2b2c8fe573.png" alt="image"></p>
-<p>先ほど設定した LINE Notify のアカウントにメッセージが表示されます。</p>
-<h2 id="ソースコードを反映"><a name="ソースコードを反映" class="plugin-anchor" href="#ソースコードを反映"><i class="fa fa-link" aria-hidden="true"></i></a>ソースコードを反映</h2>
-<p>Arduino IDE で新規ファイルを作成し、以下のコードをコピーアンドペーストします。こちらを <code>handson-Simple-LINENotify</code> で保存します。</p>
+<p>の対応をします。</p>
+<p><img src="https://i.gyazo.com/94256b33bcaf219e696e963dc783d47d.png" alt="94256b33bcaf219e696e963dc783d47d"></p>
+<p>テーブルの名前は「Table 1」と、<code>Table</code> のあとにスペースが1つあったうえで <code>1</code>がついています。このスペースをどのように送るかが、ちょっとした注意ポイントとしてあるので覚えておいてください。</p>
+<h2 id="arduino-ソースコード"><a name="arduino-ソースコード" class="plugin-anchor" href="#arduino-ソースコード"><i class="fa fa-link" aria-hidden="true"></i></a>Arduino ソースコード</h2>
+<p>Arduino IDE で新規ファイルを作成し、以下のコードをコピーアンドペーストします。こちらを <code>handson-Airtable</code> というファイル名で保存します。</p>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;M5Stack.h&gt;</span></span>
-
-<span class="hljs-comment">// HTTP 通信を行うライブラリ</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;HTTPClient.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;HTTPClient.h&gt;</span> <span class="hljs-comment">// WiFiClientSecure から HTTPClient 変更</span></span>
 
 <span class="hljs-comment">// Wi-FiのSSID</span>
 <span class="hljs-keyword">char</span> *ssid = <span class="hljs-string">&quot;Wi-FiのSSID&quot;</span>;
 <span class="hljs-comment">// Wi-Fiのパスワード</span>
 <span class="hljs-keyword">char</span> *password = <span class="hljs-string">&quot;Wi-Fiのパスワード&quot;</span>;
-
-<span class="hljs-comment">// LINE Notify トークン</span>
-String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トークン&quot;</span>;
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
 
@@ -537,37 +527,48 @@ String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トーク�
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send_message</span><span class="hljs-params">(String msg)</span> </span>{
 
-  <span class="hljs-comment">// 今回送る LINE Notify API</span>
-  <span class="hljs-comment">// 参考 https://notify-bot.line.me/doc/ja/</span>
-  String url = <span class="hljs-string">&quot;https://notify-api.line.me/api/notify&quot;</span>;
+  <span class="hljs-comment">// Airtable の自分のトークン</span>
+  <span class="hljs-comment">// https://airtable.com/account から自分の API Key を反映します。</span>
+  String airtableToken = <span class="hljs-string">&quot;Airtable の自分のトークン&quot;</span>;
+
+  <span class="hljs-comment">// Airtable の Base 名</span>
+  <span class="hljs-comment">// https://airtable.com/api に各Baseでの HTTP 仕様が確認できるので、そこから Base ID を反映します。</span>
+  String airtableBaseName = <span class="hljs-string">&quot;Airtable の Base 名&quot;</span>;
+
+  <span class="hljs-comment">// AirTable の Table 名</span>
+  <span class="hljs-comment">// Table 名は、AirTable の表示上では Table 1。</span>
+  <span class="hljs-comment">// %20 はスペースを HTTP で送るためにエンコードしているので Table%201 と指定しています。</span>
+  String airtableTableName = <span class="hljs-string">&quot;Table%201&quot;</span>;
 
   M5.Lcd.fillScreen(BLACK);
   M5.Lcd.setCursor(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
-  M5.Lcd.println(<span class="hljs-string">&quot;-&gt; LINE Notify&quot;</span>);
-  Serial.println(<span class="hljs-string">&quot;-&gt; LINE Notify&quot;</span>);
+  M5.Lcd.println(<span class="hljs-string">&quot;-&gt; Airtable send data&quot;</span>);
+  Serial.println(<span class="hljs-string">&quot;-&gt; Airtable send data&quot;</span>);
   M5.Lcd.print(<span class="hljs-string">&quot;msg: &quot;</span>);
   Serial.print(<span class="hljs-string">&quot;msg: &quot;</span>);
   M5.Lcd.println(msg);
   Serial.println(msg);
 
-  <span class="hljs-comment">// 送るデータ</span>
-  String queryString = String(<span class="hljs-string">&quot;message=&quot;</span>) + msg;
-  <span class="hljs-comment">// HTTPClient 準備</span>
+  <span class="hljs-comment">// 送るデータを JSON で。</span>
+  String queryString = <span class="hljs-string">&quot;{\&quot;records\&quot;: [{\&quot;fields\&quot;: {\&quot;Data\&quot;: \&quot;&quot;</span> + msg + <span class="hljs-string">&quot;\&quot;}}]}&quot;</span>;
+  <span class="hljs-comment">// Airtable URL 作成</span>
+  String url = <span class="hljs-string">&quot;https://api.airtable.com/v0/&quot;</span> + airtableBaseName + <span class="hljs-string">&quot;/&quot;</span> + airtableTableName;
+
   HTTPClient httpClient;
+
   <span class="hljs-comment">// URL 設定</span>
   httpClient.begin(url);
   <span class="hljs-comment">// Content-Type</span>
-  httpClient.addHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>);
+  httpClient.addHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>);
   <span class="hljs-comment">// Authorization</span>
-  httpClient.addHeader(<span class="hljs-string">&quot;Authorization&quot;</span>, <span class="hljs-string">&quot;Bearer &quot;</span> + tokenLINENotify);
-
-  M5.Lcd.println(<span class="hljs-string">&quot;sended.&quot;</span>);
-  Serial.println(<span class="hljs-string">&quot;sended.&quot;</span>);
-
+  httpClient.addHeader(<span class="hljs-string">&quot;Authorization&quot;</span>, <span class="hljs-string">&quot;Bearer &quot;</span> + airtableToken);
   <span class="hljs-comment">// ポストする</span>
   <span class="hljs-keyword">int</span> status_code = httpClient.POST(queryString);
   <span class="hljs-keyword">if</span>( status_code == <span class="hljs-number">200</span> ){
     String response = httpClient.getString();
+
+    M5.Lcd.println(<span class="hljs-string">&quot;sended.&quot;</span>);
+    Serial.println(<span class="hljs-string">&quot;sended.&quot;</span>);
 
     M5.Lcd.println(<span class="hljs-string">&quot;response:&quot;</span>);
     M5.Lcd.println(response);
@@ -581,38 +582,57 @@ String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トーク�
   M5.update();
 
   <span class="hljs-keyword">if</span> (M5.BtnA.wasReleased()) {
-    <span class="hljs-comment">// A ボタンを押したらテキストメッセージを LINE Notify へ送る</span>
+    <span class="hljs-comment">// A ボタンを押したらテキストメッセージを送る</span>
     send_message(<span class="hljs-string">&quot;Pushed A&quot;</span>);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnB.wasReleased()) {
-    <span class="hljs-comment">// B ボタンを押したらテキストメッセージを LINE Notify へ送る</span>
+    <span class="hljs-comment">// B ボタンを押したらテキストメッセージを送る</span>
     send_message(<span class="hljs-string">&quot;Pushed B&quot;</span>);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (M5.BtnC.wasReleased()) {
-    <span class="hljs-comment">// C ボタンを押したらテキストメッセージを LINE Notify へ送る</span>
+    <span class="hljs-comment">// C ボタンを押したらテキストメッセージを送る</span>
     send_message(<span class="hljs-string">&quot;Pushed C&quot;</span>);
   }
 }
 </code></pre>
-<h2 id="wi-fi-情報を反映"><a name="wi-fi-情報を反映" class="plugin-anchor" href="#wi-fi-情報を反映"><i class="fa fa-link" aria-hidden="true"></i></a>Wi-Fi 情報を反映</h2>
+<h2 id="wi-fi-を設定する"><a name="wi-fi-を設定する" class="plugin-anchor" href="#wi-fi-を設定する"><i class="fa fa-link" aria-hidden="true"></i></a>Wi-Fi を設定する</h2>
 <pre><code class="lang-c"><span class="hljs-comment">// Wi-FiのSSID</span>
 <span class="hljs-keyword">char</span> *ssid = <span class="hljs-string">&quot;Wi-FiのSSID&quot;</span>;
 <span class="hljs-comment">// Wi-Fiのパスワード</span>
 <span class="hljs-keyword">char</span> *password = <span class="hljs-string">&quot;Wi-Fiのパスワード&quot;</span>;
 </code></pre>
-<p>先ほどと同じように Wi-Fi 情報を反映します。</p>
-<h2 id="line-notify-のトークンを反映"><a name="line-notify-のトークンを反映" class="plugin-anchor" href="#line-notify-のトークンを反映"><i class="fa fa-link" aria-hidden="true"></i></a>LINE Notify のトークンを反映</h2>
-<pre><code class="lang-c"><span class="hljs-comment">// LINE Notify トークン</span>
-String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トークン&quot;</span>;
+<p>こちらには M5Stack が接続する Wi-Fi を設定します。</p>
+<h2 id="自分の-api-key-を反映"><a name="自分の-api-key-を反映" class="plugin-anchor" href="#自分の-api-key-を反映"><i class="fa fa-link" aria-hidden="true"></i></a>自分の API Key を反映</h2>
+<pre><code class="lang-c">  <span class="hljs-comment">// Airtable の自分のトークン</span>
+  <span class="hljs-comment">// https://airtable.com/account から自分の API Key を反映します。</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* airtableToken = <span class="hljs-string">&quot;AirTable の自分のトークン&quot;</span>;
 </code></pre>
-<p>Wi-Fi 設定と近いところにある <code>String tokenLINENotify = &quot;LINE Notify のトークン&quot;;</code> の <code>LINE Notify のトークン</code> の部分を、先ほどメモした LINE Notify のトークンに置き換えましょう。ダブルクオーテーションを消していないか気をつけましょう。</p>
-<h2 id="m5stack-に書き込んでみる"><a name="m5stack-に書き込んでみる" class="plugin-anchor" href="#m5stack-に書き込んでみる"><i class="fa fa-link" aria-hidden="true"></i></a>M5Stack に書き込んでみる</h2>
-<p>そして、もう一度保存します。（大事）</p>
-<p><img src="https://i.gyazo.com/45b0fd6ce672dc9a0055d45aa290e235.png" alt="image"></p>
-<p>M5Stack に書き込んでみましょう。</p>
+<p>こちらは自分のアカウントページから <a href="https://airtable.com/account" target="_blank">https://airtable.com/account</a> から API という項目を探して、自分の API Key をクリックしてコピーして反映します。</p>
+<p><img src="https://i.gyazo.com/61ff567c78ad275cfb7ad4c7705f9c51.png" alt="61ff567c78ad275cfb7ad4c7705f9c51"></p>
+<h2 id="airtable-の-base-id-を反映"><a name="airtable-の-base-id-を反映" class="plugin-anchor" href="#airtable-の-base-id-を反映"><i class="fa fa-link" aria-hidden="true"></i></a>AirTable の Base ID を反映</h2>
+<pre><code class="lang-c">  <span class="hljs-comment">// Airtable の Base ID</span>
+  <span class="hljs-comment">// https://airtable.com/api に各Baseでの HTTP 仕様が確認できるので、そこから Base ID を反映します。</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* airtableBaseName = <span class="hljs-string">&quot;Airtable の Base 名&quot;</span>;
+</code></pre>
+<p>こちらは Airtable の Base ID を反映します。</p>
+<p><img src="https://i.gyazo.com/e3f97450f6866dca3c7ed4b9f218f414.png" alt="e3f97450f6866dca3c7ed4b9f218f414"></p>
+<p>Airtable REST <a href="https://airtable.com/api" target="_blank">https://airtable.com/api</a> からに各 Base での HTTP 仕様が確認できます。</p>
+<p><img src="https://i.gyazo.com/8713a9d2030e6ca13f11767639540d4f.png" alt="8713a9d2030e6ca13f11767639540d4f"></p>
+<p>今回の Base を探してクリックします。</p>
+<p><img src="https://i.gyazo.com/fecf74d9b66006bedc3279e61a45a611.png" alt="fecf74d9b66006bedc3279e61a45a611"></p>
+<p>今回の API のINTRODUCTION ページが表示されるので、こちらから Base ID を取得して反映します。最後のピリオドは、いりません。</p>
+<h2 id="airtable-の-table-名-に注目"><a name="airtable-の-table-名-に注目" class="plugin-anchor" href="#airtable-の-table-名-に注目"><i class="fa fa-link" aria-hidden="true"></i></a>AirTable の Table 名 に注目</h2>
+<p>すでに設定済みですが、Table 名は、Airtable の表示上では Table 1。<code>Table</code> のあとにスペースが1つあったうえで <code>1</code>がついています。%20 はスペースを HTTP で送るためにエンコードしているので Table%201 と指定しています。</p>
+<pre><code class="lang-c">  <span class="hljs-comment">// AirTable の Table 名</span>
+  <span class="hljs-comment">// Table 名は、Airtable の表示上では Table 1。</span>
+  <span class="hljs-comment">// %20 はスペースを HTTP で送るためにエンコードしているので Table%201 と指定しています。</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* airtableTableName = <span class="hljs-string">&quot;Table%201&quot;</span>;
+</code></pre>
+<h2 id="保存して-m5stack-に書き込む"><a name="保存して-m5stack-に書き込む" class="plugin-anchor" href="#保存して-m5stack-に書き込む"><i class="fa fa-link" aria-hidden="true"></i></a>保存して M5Stack に書き込む</h2>
+<p>Airtable ホスト や API への URL については既にソースコードに書いてあるので、ここまでの設定ができたら保存して M5Stack に書き込みましょう。</p>
+<p><img src="https://i.gyazo.com/dc6c0318b2393b560c0ee1539529499d.jpg" alt="dc6c0318b2393b560c0ee1539529499d"></p>
+<p>起動後、うまく Wi-Fi がつながったら、このように Connected と表示されます。</p>
 <h2 id="動かしてみる"><a name="動かしてみる" class="plugin-anchor" href="#動かしてみる"><i class="fa fa-link" aria-hidden="true"></i></a>動かしてみる</h2>
-<p><img src="https://i.gyazo.com/e49942702a7683010b16a76d797d83e2.jpg" alt="image"></p>
-<p>Aボタン、Bボタン、Cボタンをクリックすると LINE Notify サーバーにメッセージが送られます。</p>
-<p><img src="https://i.gyazo.com/9bc36d121afc4ac5e8b71a2b2c8fe573.png" alt="image"></p>
-<p>先ほど設定した LINE Notify のアカウントにメッセージが表示されます。</p>
+<p><img src="https://i.gyazo.com/bb9d74211555f020237ec5a6c22409e9.png" alt="bb9d74211555f020237ec5a6c22409e9"></p>
+<p>M5Stack の A B C ボタンを押すと、このように動作して、Airtable で今回の Base を見てみると押したキーのテキストが保存されます！</p>
 <h2 id="次は"><a name="次は" class="plugin-anchor" href="#次は"><i class="fa fa-link" aria-hidden="true"></i></a>次は</h2>
 <p>左のメニューから、次に進みましょう。</p>
 
@@ -642,14 +662,10 @@ String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トーク�
 
             
                 
-                <a href="03-button-display.html" class="navigation navigation-prev " aria-label="Previous page: M5Stack のボタンやディスプレイの実装">
+                <a href="10-servo.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Grove サーボモータ">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="05-sensor-pir.html" class="navigation navigation-next " aria-label="Next page: Grove 人感センサー（PIR センサー）を動かす">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -658,7 +674,7 @@ String tokenLINENotify = <span class="hljs-string">&quot;LINE Notify トーク�
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"M5Stack から LINE Notify にメッセージを送ろう","level":"1.6","depth":1,"next":{"title":"Grove 人感センサー（PIR センサー）を動かす","level":"1.7","depth":1,"path":"05-sensor-pir.md","ref":"05-sensor-pir.md","articles":[]},"previous":{"title":"M5Stack のボタンやディスプレイの実装","level":"1.5","depth":1,"path":"03-button-display.md","ref":"03-button-display.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"04-line-notify.md","mtime":"2022-10-24T04:52:54.592Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T02:14:50.144Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Airtable にデータを書き込んでみよう","level":"1.13","depth":1,"previous":{"title":"Grove サーボモータ","level":"1.12","depth":1,"path":"10-servo.md","ref":"10-servo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"11-airtable.md","mtime":"2022-10-25T02:06:22.325Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T02:14:50.144Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

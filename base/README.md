@@ -49,6 +49,12 @@
 
 → [はじめに](01-introduction.md)
 
+# 質疑応答
+
+![image](https://i.gyazo.com/aba8ccd625e7320883851b71ebd0caf2.png)
+
+ここまでで質問があればどうぞ！
+
 ## お疲れ様でした
 
 ![image](https://i.gyazo.com/5a6aa1d064fcd403fa67091c7d0e417a.png)

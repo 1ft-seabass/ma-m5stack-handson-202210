@@ -176,6 +176,8 @@ void setup() {
 
   // WiFi 接続開始
   WiFi.begin(ssid, password);
+  // 勝手に Button A が押されることを回避
+  WiFi.setSleep(false);
 
   while (WiFi.status() != WL_CONNECTED) {
       delay(500);

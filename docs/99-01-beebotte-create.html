@@ -5,12 +5,12 @@
         <meta charset="UTF-8">
         <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#"></head>
         <meta property="og:type" content="article">
-        <meta property="og:url" content="README.html">
+        <meta property="og:url" content="99-01-beebotte-create.html">
         <meta property="og:image" content="https://i.gyazo.com/dc47094ebac368feef6aa98c09b1c84c.png">
-        <meta property="og:title" content="[M5Stack ハンズオン資料] Introduction">
+        <meta property="og:title" content="[M5Stack ハンズオン資料] Beebotte で MQTT ブローカー作成">
         <meta property="og:description" content="M5Stack ハンズオン資料です。">
         <meta property="og:locale" content="ja">
-        <title>[M5Stack ハンズオン資料] Introduction</title>
+        <title>[M5Stack ハンズオン資料] Beebotte で MQTT ブローカー作成</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="M5Stack ハンズオン資料です。">
         <meta name="generator" content="HonKit 3.7.4">
@@ -75,8 +75,6 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="00-preparation/" />
-    
     
 
     </head>
@@ -105,7 +103,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -404,7 +402,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.11.1" data-path="99-01-beebotte-create.html">
+        <li class="chapter active" data-level="1.11.1" data-path="99-01-beebotte-create.html">
             
                 <a href="99-01-beebotte-create.html">
             
@@ -452,7 +450,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Beebotte で MQTT ブローカー作成</a>
     </h1>
 </div>
 
@@ -467,58 +465,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="readme"><a name="readme" class="plugin-anchor" href="#readme"><i class="fa fa-link" aria-hidden="true"></i></a>README</h1>
-<p><img src="https://i.gyazo.com/dc47094ebac368feef6aa98c09b1c84c.png" alt="image"></p>
-<p>このページは M5Stack ハンズオンのトップページです。</p>
-<h2 id="事前準備"><a name="事前準備" class="plugin-anchor" href="#事前準備"><i class="fa fa-link" aria-hidden="true"></i></a>事前準備</h2>
-<p>ハンズオン前に事前準備をお願いします👍</p>
-<p><img src="https://i.gyazo.com/0b45133da885fa0da13a7f1c12156674.png" alt="image"></p>
-<p>→ <a href="00-preparation/">事前準備</a></p>
-<h2 id="講師紹介"><a name="講師紹介" class="plugin-anchor" href="#講師紹介"><i class="fa fa-link" aria-hidden="true"></i></a>講師紹介</h2>
-<p><img src="https://i.gyazo.com/0116e8a74666ace1a45096ae02b54347.jpg" alt="Image from Gyazo" width="200"></p>
-<p>田中正吾 タナカセイゴ</p>
-<p>屋号ワンフットシーバスにてフリーランスエンジニアで活動。Microsoft MVP・IBM Champion。WEBフロントエンドをベースにしながらも、情報とインターフェースが合わさるアプローチという視点でIoTやMixed Realityといった技術も取り入れながら活動しています。ウォンバットが好き。</p>
-<h2 id="当日の流れ"><a name="当日の流れ" class="plugin-anchor" href="#当日の流れ"><i class="fa fa-link" aria-hidden="true"></i></a>当日の流れ</h2>
-<p>10/25火　13:00-16:00</p>
+                                <h1 id="beebotte-で-mqtt-ブローカー作成"><a name="beebotte-で-mqtt-ブローカー作成" class="plugin-anchor" href="#beebotte-で-mqtt-ブローカー作成"><i class="fa fa-link" aria-hidden="true"></i></a>Beebotte で MQTT ブローカー作成</h1>
+<p>Beebotte で MQTT ブローカー作成する場合の手順です。</p>
+<h2 id="beebotte"><a name="beebotte" class="plugin-anchor" href="#beebotte"><i class="fa fa-link" aria-hidden="true"></i></a>Beebotte</h2>
+<p><img src="https://i.gyazo.com/7eab328829ff25dfcf38f30d1cb74938.png" alt="7eab328829ff25dfcf38f30d1cb74938"></p>
+<p><a href="https://beebotte.com/" target="_blank">Beebotte</a> は、リアルタイム接続オブジェクト用のクラウドプラットフォームでということで、IoT にも相性がよく REST、WebSocket、MQTTをサポートする豊富なAPIがあります。</p>
+<p><img src="https://i.gyazo.com/d0ec5ebe055cb71d1dcdca839fce5428.png" alt="d0ec5ebe055cb71d1dcdca839fce5428"></p>
+<p>クレジットカード不要で始めることができるのも大きなメリットでしょう。</p>
+<p>2022 年 10 月現在、Free プランでも、</p>
+<blockquote>
+<p>Unlimited Channels
+50,000 Messages/day
+5,000 Persistent Messages/day
+3 Months History
+SSL Encryption</p>
+</blockquote>
+<p>日本語に訳してみると、</p>
+<blockquote>
+<p>無制限のチャンネル
+50,000メッセージ/日
+5,000永続メッセージ/日
+3ヶ月の履歴
+SSL暗号化</p>
+</blockquote>
+<p>なので、ホビーレベルであれば、制限内でも十分に使えます。</p>
+<h2 id="beebotte-でチャンネル作成"><a name="beebotte-でチャンネル作成" class="plugin-anchor" href="#beebotte-でチャンネル作成"><i class="fa fa-link" aria-hidden="true"></i></a>Beebotte でチャンネル作成</h2>
+<p>アカウント登録が済んでいる前提で進めます。</p>
+<p><img src="https://i.gyazo.com/b0eda154682c29f1b96a05dda9cb64b2.png" alt="b0eda154682c29f1b96a05dda9cb64b2"></p>
+<p>右のメニューから Channels をクリックして My Channels を表示します。</p>
+<p>Create New ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/bcf322e94fa4f6b2d71c2edb07ddb1a6.png" alt="bcf322e94fa4f6b2d71c2edb07ddb1a6"></p>
+<p>Create a new channel ページに移動するので、</p>
+<p><img src="https://i.gyazo.com/24a8ca8fcd81458f081307065f231522.png" alt="24a8ca8fcd81458f081307065f231522"></p>
 <ul>
-<li>13:00-13:10<ul>
-<li>はじめに</li>
+<li>Channel Name<ul>
+<li>handson</li>
 </ul>
 </li>
-<li>13:10-14:00<ul>
-<li>あるサーバーに HTTP でメッセージを送ってみよう</li>
-<li>内蔵ボタンや内蔵ディスプレイを動かしてみよう</li>
-</ul>
-</li>
-<li>14:00-14:30<ul>
-<li>LINE Notify にメッセージを送ってみよう</li>
-<li>センサー実装のソースコードを紹介</li>
-</ul>
-</li>
-<li>14:30-14:40<ul>
-<li>休憩</li>
-</ul>
-</li>
-<li>14:40-15:30<ul>
-<li>MQTT を使って M5Stack の遠隔ディスプレイ制御をしよう</li>
-<li>Airtable にデータを蓄積してみよう</li>
-<li>エクストラ</li>
-</ul>
-</li>
-<li>15:30-16:00<ul>
-<li>おわりに・質疑応答</li>
+<li>Resource name<ul>
+<li>data</li>
 </ul>
 </li>
 </ul>
-<h2 id="ハンズオンスタート！"><a name="ハンズオンスタート！" class="plugin-anchor" href="#ハンズオンスタート！"><i class="fa fa-link" aria-hidden="true"></i></a>ハンズオンスタート！</h2>
-<p><img src="https://i.gyazo.com/9e0eefffd6cf76fc45e70b1ac8a7f838.png" alt="image"></p>
-<p>では、今日のハンズオンをはじめていきましょう。</p>
-<p>→ <a href="01-introduction.html">はじめに</a></p>
-<h1 id="質疑応答"><a name="質疑応答" class="plugin-anchor" href="#質疑応答"><i class="fa fa-link" aria-hidden="true"></i></a>質疑応答</h1>
-<p><img src="https://i.gyazo.com/aba8ccd625e7320883851b71ebd0caf2.png" alt="image"></p>
-<p>ここまでで質問があればどうぞ！</p>
-<h2 id="お疲れ様でした"><a name="お疲れ様でした" class="plugin-anchor" href="#お疲れ様でした"><i class="fa fa-link" aria-hidden="true"></i></a>お疲れ様でした</h2>
-<p><img src="https://i.gyazo.com/5a6aa1d064fcd403fa67091c7d0e417a.png" alt="image"></p>
+<p>と設定して、Create channel ボタンをクリックします。</p>
+<h2 id="リソースグループ-設定確認と-test-チャンネルの-channel-token-をメモ"><a name="リソースグループ-設定確認と-test-チャンネルの-channel-token-をメモ" class="plugin-anchor" href="#リソースグループ-設定確認と-test-チャンネルの-channel-token-をメモ"><i class="fa fa-link" aria-hidden="true"></i></a>リソースグループ 設定確認と test チャンネルの Channel Token をメモ</h2>
+<p>登録が済むとチャンネル一覧画面に移動します。</p>
+<p><img src="https://i.gyazo.com/5938c190316d4d7d42e77b3c92d81225.png" alt="5938c190316d4d7d42e77b3c92d81225"></p>
+<p>My Channels に、このようにいま設定したチャンネルが表示されるのでクリックします。矢印の部分がタイトルです。</p>
+<p><img src="https://i.gyazo.com/e7f7f0fed71b49eed851f21b533f2cd4.png" alt="e7f7f0fed71b49eed851f21b533f2cd4"></p>
+<p>矢印の部分の赤文字の Channel Token をメモしつつ、Configured resources に先ほど設定したリソースグループ res が設定されていることを確認します。</p>
+<p>これで、やりとりするための MQTT 設定は完了です。</p>
+<h2 id="mqtt接続設定のおさらい"><a name="mqtt接続設定のおさらい" class="plugin-anchor" href="#mqtt接続設定のおさらい"><i class="fa fa-link" aria-hidden="true"></i></a>MQTT接続設定のおさらい</h2>
+<p><a href="https://beebotte.com/docs/mqtt" target="_blank">Beebotte MQTT Support</a> で MQTT の設定が確認できます。</p>
+<p>MQTT のブローカー設定としては以下のように設定します。</p>
+<ul>
+<li>MQTTブローカー先<ul>
+<li>mqtt.beebotte.com</li>
+</ul>
+</li>
+<li>ポート<ul>
+<li>1883</li>
+</ul>
+</li>
+<li>接続するユーザー名<ul>
+<li>さきほどメモした Channel Token を使う</li>
+</ul>
+</li>
+<li>接続するパスワード<ul>
+<li>（なにも書かない）</li>
+</ul>
+</li>
+<li>接続トピック<ul>
+<li><code>チャンネル名</code>/<code>リソースグループ名</code> を設定</li>
+<li>handson チャンネルで data  リソースグループの場合は <code>handson/data</code></li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -547,10 +569,6 @@
             
                 
                 
-                <a href="00-preparation/" class="navigation navigation-next navigation-unique" aria-label="Next page: 事前準備">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
             
         
     </div>
@@ -558,7 +576,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"事前準備","level":"1.2","depth":1,"path":"00-preparation/README.md","ref":"00-preparation/README.md","articles":[{"title":"Arduino インストール","level":"1.2.1","depth":2,"path":"00-preparation/00-arduino-install.md","ref":"00-preparation/00-arduino-install.md","articles":[]},{"title":"Arduino の設定","level":"1.2.2","depth":2,"path":"00-preparation/01-arduino-setting.md","ref":"00-preparation/01-arduino-setting.md","articles":[]},{"title":"Arduino でコンパイル検証","level":"1.2.3","depth":2,"path":"00-preparation/02-arduino-test.md","ref":"00-preparation/02-arduino-test.md","articles":[]},{"title":"USB ドライバのインストール","level":"1.2.4","depth":2,"path":"00-preparation/03-usb-driver-install.md","ref":"00-preparation/03-usb-driver-install.md","articles":[]},{"title":"M5Stack へ書き込み","level":"1.2.5","depth":2,"path":"00-preparation/04-arduino-write.md","ref":"00-preparation/04-arduino-write.md","articles":[]},{"title":"Wi-Fi につなぐ前に周辺の Wi-Fi を確認","level":"1.2.6","depth":2,"path":"00-preparation/05-wifi-list.md","ref":"00-preparation/05-wifi-list.md","articles":[]},{"title":"Wi-Fi をつないでみる","level":"1.2.7","depth":2,"path":"00-preparation/06-wifi-connect.md","ref":"00-preparation/06-wifi-connect.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"README.md","mtime":"2022-10-25T02:14:43.986Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T07:16:33.949Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Beebotte で MQTT ブローカー作成","level":"1.11.1","depth":2,"previous":{"title":"資料","level":"1.11","depth":1,"ref":"","articles":[{"title":"Beebotte で MQTT ブローカー作成","level":"1.11.1","depth":2,"path":"99-01-beebotte-create.md","ref":"99-01-beebotte-create.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"99-01-beebotte-create.md","mtime":"2022-10-24T05:59:50.961Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T07:16:33.949Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

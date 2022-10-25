@@ -640,6 +640,7 @@ send_message(serializedJsonString);
 <li>ArduinoJson が見つかったらインストール</li>
 </ul>
 <p>でインストールを済ませたら、該当のコードで <code>#include &lt;ArduinoJson.h&gt;</code> で呼び出して使います。</p>
+<p>全体を書き換えた例がこちらです。</p>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;M5Stack.h&gt;</span></span>
 
 <span class="hljs-comment">// HTTP 通信を行うライブラリ</span>
@@ -702,7 +703,15 @@ send_message(serializedJsonString);
 
   <span class="hljs-comment">// 起動時に送る</span>
   delay(<span class="hljs-number">1000</span>);
-  send_message(<span class="hljs-string">&quot;{\&quot;message\&quot;:\&quot;Launched!\&quot;}&quot;</span>);
+
+  <span class="hljs-comment">// JSON を格納するオブジェクト DynamicJsonDocument</span>
+  <span class="hljs-function">DynamicJsonDocument <span class="hljs-title">doc</span><span class="hljs-params">(<span class="hljs-number">255</span>)</span></span>;
+  <span class="hljs-comment">// JSON データ作成</span>
+  doc[<span class="hljs-string">&quot;message&quot;</span>] = <span class="hljs-string">&quot;Launched!&quot;</span>;
+  <span class="hljs-comment">// JSON 変換</span>
+  serializeJson(doc,serializedJsonString);
+  <span class="hljs-comment">// データを送る</span>
+  send_message(serializedJsonString);
 }
 
 <span class="hljs-comment">// HTTP でメッセージ送信部分</span>
@@ -773,6 +782,18 @@ send_message(serializedJsonString);
   }
 }
 </code></pre>
+<h2 id="エクストラ--line-bot-サーバーに-m5stack-からデータを送る"><a name="エクストラ--line-bot-サーバーに-m5stack-からデータを送る" class="plugin-anchor" href="#エクストラ--line-bot-サーバーに-m5stack-からデータを送る"><i class="fa fa-link" aria-hidden="true"></i></a>エクストラ : LINE BOT サーバーに M5Stack からデータを送る</h2>
+<p><img src="https://i.gyazo.com/dfcc280a626e063bf886fe70f5a7084f.png" alt="dfcc280a626e063bf886fe70f5a7084f"></p>
+<p>まったく別で構築した LINE BOT サーバーの <code>/&lt;Path&gt;/from/m5stack</code> という POST リクエストを受け付ける仕組みを作った後、今回の M5Stack のサーバーにメッセージを送ってみるコードの送り先の URL を、さきほどの LINE BOT サーバーに向けるとLINE BOT サーバーに M5Stack からデータを送る仕組みが作れます。</p>
+<p><img src="https://i.gyazo.com/9cfd2cc24c9761470e4a7752ec2c7043.png" alt="9cfd2cc24c9761470e4a7752ec2c7043"></p>
+<p>今回は講師の方で enebular のクラウド実行環境で作った LINE BOT サーバーにPOST リクエストを受け付ける仕組みを作りました。</p>
+<p>Arduino のソースコードを変更して書き込んでみます。</p>
+<pre><code>  // 今回送るURL
+  String url = &quot;https://app-1ft-iot-test-server.herokuapp.com/api/test/message&quot;;
+</code></pre><p>この部分 <code>https://app-1ft-iot-test-server.herokuapp.com/api/test/message</code> をハンズオン中に連絡する URL に変更して M5Stack に書き込んでみましょう。</p>
+<p><img src="https://i.gyazo.com/301a7499db5f0aa4c0a94529214b5f55.jpg" alt="301a7499db5f0aa4c0a94529214b5f55"></p>
+<p>Connected の表示が出たら M5Stack の A B C ボタンを押して、 LINE BOT にメッセージが表示されます。</p>
+<p>たぶん、みんなでやると、どかどか送られてカオスで楽しい。</p>
 <h2 id="次は"><a name="次は" class="plugin-anchor" href="#次は"><i class="fa fa-link" aria-hidden="true"></i></a>次は</h2>
 <p>左のメニューから、次に進みましょう。</p>
 
@@ -818,7 +839,7 @@ send_message(serializedJsonString);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"サーバーにメッセージを送ってみる","level":"1.4","depth":1,"next":{"title":"M5Stack のボタンやディスプレイの実装","level":"1.5","depth":1,"path":"03-button-display.md","ref":"03-button-display.md","articles":[]},"previous":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"02-httt-post-json.md","mtime":"2022-10-24T04:52:50.929Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T02:14:50.144Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"サーバーにメッセージを送ってみる","level":"1.4","depth":1,"next":{"title":"M5Stack のボタンやディスプレイの実装","level":"1.5","depth":1,"path":"03-button-display.md","ref":"03-button-display.md","articles":[]},"previous":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"M5Stack ハンズオン資料","language":"ja","gitbook":"*","description":"M5Stack ハンズオン資料です。"},"file":{"path":"02-httt-post-json.md","mtime":"2022-10-25T03:36:17.799Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2022-10-25T03:36:22.244Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

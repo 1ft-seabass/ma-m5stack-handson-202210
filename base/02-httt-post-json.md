@@ -267,6 +267,8 @@ send_message(serializedJsonString);
 
 でインストールを済ませたら、該当のコードで `#include <ArduinoJson.h>` で呼び出して使います。
 
+全体を書き換えた例がこちらです。
+
 ```c
 #include <M5Stack.h>
 
@@ -330,7 +332,15 @@ void setup() {
   
   // 起動時に送る
   delay(1000);
-  send_message("{\"message\":\"Launched!\"}");
+
+  // JSON を格納するオブジェクト DynamicJsonDocument
+  DynamicJsonDocument doc(255);
+  // JSON データ作成
+  doc["message"] = "Launched!";
+  // JSON 変換
+  serializeJson(doc,serializedJsonString);
+  // データを送る
+  send_message(serializedJsonString);
 }
 
 // HTTP でメッセージ送信部分
@@ -401,6 +411,31 @@ void loop() {
   }
 }
 ```
+
+## エクストラ : LINE BOT サーバーに M5Stack からデータを送る
+
+![dfcc280a626e063bf886fe70f5a7084f](https://i.gyazo.com/dfcc280a626e063bf886fe70f5a7084f.png)
+
+まったく別で構築した LINE BOT サーバーの `/<Path>/from/m5stack` という POST リクエストを受け付ける仕組みを作った後、今回の M5Stack のサーバーにメッセージを送ってみるコードの送り先の URL を、さきほどの LINE BOT サーバーに向けるとLINE BOT サーバーに M5Stack からデータを送る仕組みが作れます。
+
+![9cfd2cc24c9761470e4a7752ec2c7043](https://i.gyazo.com/9cfd2cc24c9761470e4a7752ec2c7043.png)
+
+今回は講師の方で enebular のクラウド実行環境で作った LINE BOT サーバーにPOST リクエストを受け付ける仕組みを作りました。
+
+Arduino のソースコードを変更して書き込んでみます。
+
+```
+  // 今回送るURL
+  String url = "https://app-1ft-iot-test-server.herokuapp.com/api/test/message";
+```
+
+この部分 `https://app-1ft-iot-test-server.herokuapp.com/api/test/message` をハンズオン中に連絡する URL に変更して M5Stack に書き込んでみましょう。
+
+![301a7499db5f0aa4c0a94529214b5f55](https://i.gyazo.com/301a7499db5f0aa4c0a94529214b5f55.jpg)
+
+Connected の表示が出たら M5Stack の A B C ボタンを押して、 LINE BOT にメッセージが表示されます。
+
+たぶん、みんなでやると、どかどか送られてカオスで楽しい。
 
 ## 次は
 
